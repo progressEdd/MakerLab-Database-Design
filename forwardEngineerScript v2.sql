@@ -1,3 +1,5 @@
+-- MySQL Workbench Forward Engineering
+
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -40,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `team2`.`employee` (
   `school_year` VARCHAR(45) NULL,
   `major` VARCHAR(45) NULL,
   `postion` VARCHAR(45) NULL,
-  INDEX `fk_Employee_person_idx` (`person_id` ASC) ,
+  INDEX `fk_Employee_person_idx` (`person_id` ASC),
   CONSTRAINT `fk_Employee_person`
     FOREIGN KEY (`person_id`)
     REFERENCES `team2`.`person` (`id`)
@@ -138,13 +140,13 @@ ENGINE = InnoDB;
 -- Table `team2`.`birthday`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `team2`.`birthday` (
-  `event_person_id` INT NOT NULL,
   `event_id` INT NOT NULL,
   `number_attendees` INT NULL,
-  INDEX `fk_birthday_event1_idx` (`event_id` ASC, `event_person_id` ASC) ,
+  INDEX `fk_birthday_event1_idx` (`event_id` ASC) ,
+  PRIMARY KEY (`event_id`),
   CONSTRAINT `fk_birthday_event1`
-    FOREIGN KEY (`event_id` , `event_person_id`)
-    REFERENCES `team2`.`event` (`id` , `person_id`)
+    FOREIGN KEY (`event_id`)
+    REFERENCES `team2`.`event` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -317,25 +319,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `team2`.`invoice`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `team2`.`invoice` (
-  `billing_address` VARCHAR(45) NULL,
-  `shipping_address` VARCHAR(45) NULL,
-  `total` DECIMAL NULL,
-  `down_payment` DECIMAL NULL,
-  `line_order_id` INT NOT NULL,
-  `line_product_id` INT NOT NULL,
-  INDEX `fk_invoice_line1_idx` (`line_order_id` ASC, `line_product_id` ASC) ,
-  CONSTRAINT `fk_invoice_line1`
-    FOREIGN KEY (`line_order_id` , `line_product_id`)
-    REFERENCES `team2`.`line` (`order_id` , `product_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `team2`.`surplus`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `team2`.`surplus` (
@@ -359,6 +342,10 @@ CREATE TABLE IF NOT EXISTS `team2`.`payment` (
   `payment_date` VARCHAR(45) NULL,
   `amount_paid` VARCHAR(45) NULL,
   `payment_method` VARCHAR(45) NULL,
+  `billing_address` VARCHAR(45) NULL,
+  `shipping_address` VARCHAR(45) NULL,
+  `total` DECIMAL NULL,
+  `down_payment` DECIMAL NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_payment_order1_idx` (`order_id` ASC) ,
   CONSTRAINT `fk_payment_order1`
