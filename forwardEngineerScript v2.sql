@@ -42,23 +42,8 @@ CREATE TABLE IF NOT EXISTS `team2`.`employee` (
   `school_year` VARCHAR(45) NULL,
   `major` VARCHAR(45) NULL,
   `postion` VARCHAR(45) NULL,
-  INDEX `fk_Employee_person_idx` (`person_id` ASC),
-  CONSTRAINT `fk_Employee_person`
-    FOREIGN KEY (`person_id`)
-    REFERENCES `team2`.`person` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `team2`.`patron`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `team2`.`patron` (
-  `person_id` INT NOT NULL,
-  `designation` VARCHAR(45) NULL,
   INDEX `fk_Employee_person_idx` (`person_id` ASC) ,
-  CONSTRAINT `fk_Employee_person0`
+  CONSTRAINT `fk_Employee_person`
     FOREIGN KEY (`person_id`)
     REFERENCES `team2`.`person` (`id`)
     ON DELETE NO ACTION
@@ -90,12 +75,24 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `team2`.`donor` (
   `patron_person_id` INT NOT NULL,
   `organization` VARCHAR(45) NULL,
-  INDEX `fk_donor_patron1_idx` (`patron_person_id` ASC) ,
-  CONSTRAINT `fk_donor_patron1`
-    FOREIGN KEY (`patron_person_id`)
-    REFERENCES `team2`.`patron` (`person_id`)
+  `person_id` INT NOT NULL,
+  INDEX `fk_donor_person1_idx` (`person_id` ASC) ,
+  CONSTRAINT `fk_donor_person1`
+    FOREIGN KEY (`person_id`)
+    REFERENCES `team2`.`person` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `team2`.`material`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `team2`.`material` (
+  `material_id` INT NOT NULL,
+  `material_name` VARCHAR(45) NULL,
+  `material_desc` LONGTEXT NULL,
+  PRIMARY KEY (`material_id`))
 ENGINE = InnoDB;
 
 
@@ -104,14 +101,21 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `team2`.`donations` (
   `donor_patron_person_id` INT NOT NULL,
-  `date` VARCHAR(45) NULL,
+  `date` VARCHAR(45) NOT NULL,
   `item_name` VARCHAR(45) NULL,
   `item_desc` LONGTEXT NULL,
   `value` VARCHAR(45) NULL,
-  PRIMARY KEY (`donor_patron_person_id`),
+  `material_material_id` INT NOT NULL,
+  PRIMARY KEY (`donor_patron_person_id`, `material_material_id`, `date`),
+  INDEX `fk_donations_material1_idx` (`material_material_id` ASC) ,
   CONSTRAINT `fk_donations_donor1`
     FOREIGN KEY (`donor_patron_person_id`)
     REFERENCES `team2`.`donor` (`patron_person_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_donations_material1`
+    FOREIGN KEY (`material_material_id`)
+    REFERENCES `team2`.`material` (`material_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -122,17 +126,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `team2`.`event` (
   `id` INT NOT NULL,
-  `person_id` INT NOT NULL,
   `event_type` VARCHAR(45) NULL,
   `event_date` DATETIME NULL,
-  `role` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_event_person1_idx` (`person_id` ASC) ,
-  CONSTRAINT `fk_event_person1`
-    FOREIGN KEY (`person_id`)
-    REFERENCES `team2`.`person` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -170,7 +166,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `team2`.`maintenance` (
   `maint_id` INT NOT NULL,
   `equipment_p_code` INT NOT NULL,
-  `employee_person_id` INT NULL,
+  `employee_person_id` INT NOT NULL,
   `maint_date` VARCHAR(45) NULL,
   `maint_desc` LONGTEXT NULL,
   PRIMARY KEY (`maint_id`),
@@ -204,24 +200,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `team2`.`material`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `team2`.`material` (
-  `material_id` INT NOT NULL,
-  `material_name` VARCHAR(45) NULL,
-  `material_desc` LONGTEXT NULL,
-  `donations_donor_patron_person_id` INT NULL,
-  PRIMARY KEY (`material_id`),
-  INDEX `fk_material_donations1_idx` (`donations_donor_patron_person_id` ASC) ,
-  CONSTRAINT `fk_material_donations1`
-    FOREIGN KEY (`donations_donor_patron_person_id`)
-    REFERENCES `team2`.`donations` (`donor_patron_person_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `team2`.`vendor`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `team2`.`vendor` (
@@ -244,10 +222,10 @@ CREATE TABLE IF NOT EXISTS `team2`.`purchase` (
   `id` INT NOT NULL,
   `date` VARCHAR(45) NULL,
   `price_per_unit` DECIMAL NULL,
-  `material_material_id` INT NOT NULL,
+  `material_material_id` INT NULL,
   `vendor_id` INT NOT NULL,
-  `product_id` INT NOT NULL,
-  `equipment_p_code` INT NOT NULL,
+  `product_id` INT NULL,
+  `equipment_p_code` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_purchase_material1_idx` (`material_material_id` ASC) ,
   INDEX `fk_purchase_vendor1_idx` (`vendor_id` ASC) ,
@@ -322,7 +300,7 @@ ENGINE = InnoDB;
 -- Table `team2`.`surplus`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `team2`.`surplus` (
-  `p_code` INT NULL,
+  `p_code` INT NOT NULL,
   `date` DATETIME NULL,
   `reason` VARCHAR(45) NULL,
   CONSTRAINT `fk_surplus_equipment1`
@@ -344,7 +322,6 @@ CREATE TABLE IF NOT EXISTS `team2`.`payment` (
   `payment_method` VARCHAR(45) NULL,
   `billing_address` VARCHAR(45) NULL,
   `shipping_address` VARCHAR(45) NULL,
-  `total` DECIMAL NULL,
   `down_payment` DECIMAL NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_payment_order1_idx` (`order_id` ASC) ,
@@ -356,6 +333,30 @@ CREATE TABLE IF NOT EXISTS `team2`.`payment` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `team2`.`attendance`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `team2`.`attendance` (
+  `event_id` INT NOT NULL,
+  `person_id` INT NOT NULL,
+  `role` VARCHAR(45) NULL,
+  PRIMARY KEY (`person_id`, `event_id`),
+  INDEX `fk_event_has_person_person1_idx` (`person_id` ASC) ,
+  INDEX `fk_event_has_person_event1_idx` (`event_id` ASC) ,
+  CONSTRAINT `fk_event_has_person_event1`
+    FOREIGN KEY (`event_id`)
+    REFERENCES `team2`.`event` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_event_has_person_person1`
+    FOREIGN KEY (`person_id`)
+    REFERENCES `team2`.`person` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
