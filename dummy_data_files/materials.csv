@@ -1,4 +1,5 @@
 material_name,material_desc,material_id
+money,money,1
 Desks,2 desks for printers,2
 3D Printer,Makerlab_promax,3
 3D Printer,Makerlab_promax,4
@@ -8,3 +9,5 @@ Computer,desktop,7
 TV,For display models,8
 Computer,desktop,9
 Computer,main desktop,10
+filament,blue,11
+filament,orange,12
