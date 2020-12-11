@@ -1,0 +1,11 @@
+date,item_name,item_desc,value,material_material_id,donor_id,donation_id
+2020-12-01,"3D Printer",Makerlab_ray,4500,1,1001,1
+2020-12-02,Desks,"2 desks for printers",800,2,1002,2
+2020-12-07,"3D Printer",Makerlab_promax,6750,3,1003,3
+2020-12-07,"3D Printer",Makerlab_promax,6750,4,1004,4
+2020-11-09,"3D Printer",Makerlab_pro,5500,5,1005,5
+2020-11-12,"3D Printer",Makerlab_pro,5500,6,1006,6
+2020-10-07,Computer,desktop,2500,7,1007,7
+2020-09-02,TV,"For display models",500,8,1008,8
+2020-09-09,Computer,desktop,2500,9,1009,9
+2020-09-10,Computer,"main desktop",3000,10,1010,10
