@@ -28,7 +28,8 @@ ON event.id = birthday.event_id
 WHERE number_attendees  = 5; 
 
 -- volunteer
-SELECT person_id, first_name, last_name, email, college, category, employee_type, employee.postion 
+SELECT person_id, first_name, last_name, college, category, employee_type, employee.postion,
+	 SUM((TIME_TO_SEC(TIMEDIFF(`timesheet`.`end_datetime`, `timesheet`.`start_datetime`)) / 3600)) AS `tot_hours`
 FROM person
 JOIN employee 
 ON person.id = employee.person_id
@@ -36,3 +37,21 @@ JOIN timesheet
 ON employee_person_id = timesheet.employee_person_id
 GROUP BY person_id
 HAVING employee.postion = "volunteer";
+
+SELECT person_id, first_name, last_name, email, college, category, employee_type, employee.postion,
+	 SUM((TIME_TO_SEC(TIMEDIFF(`timesheet`.`end_datetime`, `timesheet`.`start_datetime`)) / 3600)) AS `tot_hours`
+FROM team2.person
+JOIN employee 
+ON person.id = employee.person_id
+JOIN timesheet
+ON employee_person_id = timesheet.employee_person_id
+GROUP BY person_id;
+
+
+-- surplus log
+SELECT equipment_p_code, maintenance.maint_desc
+FROM maintenance
+JOIN equipment
+ON maintenance.equipment_p_code = equipment.p_code
+JOIN surplus
+ON equipment_p_code = surplus.p_code
