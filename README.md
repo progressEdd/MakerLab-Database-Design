@@ -23,7 +23,7 @@
 
    ## BADM 554 Final Project
    ## Authors
-   Mia Berkley, Daisy Li, Alan Xue, [Edward Tang](https://www.linkedin.com/in/progressedd/), Neel Ganta
+   Mia Berkley, Daisy Li, [Alan Xue](https://www.linkedin.com/in/alan-xue/), [Edward Tang](https://www.linkedin.com/in/progressedd/), Neel Ganta
 
 
 # Introduction
@@ -155,7 +155,7 @@ We decided to normalize our tables to organize our data in the database. We did 
 * Timesheets do not indicate the position of the employee for that particular day. In other words, we would not know the time period an employee spent as a volunteer and as a guru.
 
 # Contribution of each individual team member
-1. Alan Xue
+1. [Alan Xue](https://www.linkedin.com/in/alan-xue/)
       * Collaborated on constructing and tuning conceptual and logical models.
       * Wrote business rules and parts of the glossary.
       * Assisted in creating queries used during presentation.
