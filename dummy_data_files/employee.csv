@@ -1,0 +1,8 @@
+person_id,employee_type,hourly_wage,start_date,end_date,school_year,major,postion,employee_id
+16080218,Full-time,20,2019-05-06,NULL,4,CS,Manager,2001
+16360907,Full-time,20,2019-05-07,NULL,1,CS,Guru,2002
+16371211,Part-time,15,2019-05-07,2020-03-08,2,CS,Guru,2003
+16541020,Part-time,15,2019-05-31,2020-07-14,3,CS,Guru,2004
+16710222,Part-time,15,2019-02-01,2020-11-05,1,CS,Volunteer,2005
+16740420,Part-time,15,2019-10-09,NULL,2,CS,Guru,2006
+16810619,Part-time,15,2020-04-03,NULL,2,CS,Guru,2007

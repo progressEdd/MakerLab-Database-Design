@@ -1,0 +1,13 @@
+material_id,material_name,material_desc
+1,money,money
+2,Desks,"2 desks for printers"
+3,"3D Printer",Makerlab_promax
+4,"3D Printer",Makerlab_promax
+5,"3D Printer",Makerlab_pro
+6,"3D Printer",Makerlab_pro
+7,Computer,desktop
+8,TV,"For display models"
+9,Computer,desktop
+10,Computer,"main desktop"
+11,filament,blue
+12,filament,orange
