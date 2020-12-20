@@ -1,10 +1,8 @@
 # MakerLab Database Design
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-   ## BADM 554 Final Project
-   Mia Berkley, Daisy Li, Alan Xue, Edward Tang, Neel Ganta
+
 - [MakerLab Database Design](#makerlab-database-design)
   * [BADM 554 Final Project](#badm-554-final-project)
-  * [Mia Berkley, Daisy Li, Alan Xue, Edward Tang, Neel Ganta](#mia-berkley--daisy-li--alan-xue--edward-tang--neel-ganta)
+  * [Authors](#authors)
 - [Introduction](#introduction)
 - [Scope](#scope)
   * [Summary](#summary)
@@ -17,8 +15,16 @@
 - [Glossary](#glossary)
 - [Critique: Problems/weaknesses with our current design or database.](#critique--problems-weaknesses-with-our-current-design-or-database)
 - [Contribution of each individual team member](#contribution-of-each-individual-team-member)
+- [ER Diagram](#er-diagram)
 - [Database](#database)
   * [**Business Reports**](#--business-reports--)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+   ## BADM 554 Final Project
+   ## Authors
+   Mia Berkley, Daisy Li, Alan Xue, Edward Tang, Neel Ganta
+
 
 # Introduction
 Illinois MakerLab is the first business school 3D printing lab in the world managed by Executive Director Dr. Aric Rindfleisch and Director Vishal Sachdev. Its mission is to help University of Illinois students, faculty and staff engage with the 3D modeling and printing technologies. While providing students with hands-on business experience in manufacturing, retailing, supply chain, and pricing as a complete ecosystem, MakerLab accepts customers orders outside the university to assist the daily operation of the laboratory. Current version of the management system of MakerLab involved fewer databases, with garbage data and un-updated entries. To be able to increase work efficiency and real-time data collection, we designate a brand new database system for MakerLab to address these issues.
