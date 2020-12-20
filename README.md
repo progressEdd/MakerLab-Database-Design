@@ -1,3 +1,23 @@
+- [MakerLab Database Design](#makerlab-database-design)
+  * [BADM 554 Final Project](#badm-554-final-project)
+  * [Mia Berkley, Daisy Li, Alan Xue, Edward Tang, Neel Ganta](#mia-berkley--daisy-li--alan-xue--edward-tang--neel-ganta)
+- [Introduction](#introduction)
+- [Scope](#scope)
+  * [Summary](#summary)
+  * [Impact:](#impact-)
+  * [Deliverables:](#deliverables-)
+  * [Company & Context](#company---context)
+- [Goals Of Our Project](#goals-of-our-project)
+- [Business Rules](#business-rules)
+- [Conceptual design (E-R diagram) and logical design:](#conceptual-design--e-r-diagram--and-logical-design-)
+- [Glossary](#glossary)
+- [Critique: Problems/weaknesses with our current design or database.](#critique--problems-weaknesses-with-our-current-design-or-database)
+- [Contribution of each individual team member](#contribution-of-each-individual-team-member)
+- [Database](#database)
+  * [**Business Reports**](#--business-reports--)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 # MakerLab Database Design
    ## BADM 554 Final Project
    
