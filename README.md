@@ -23,7 +23,7 @@
 
    ## BADM 554 Final Project
    ## Authors
-   Mia Berkley, Daisy Li, Alan Xue, Edward Tang, Neel Ganta
+   Mia Berkley, Daisy Li, Alan Xue, [Edward Tang](https://www.linkedin.com/in/progressedd/), Neel Ganta
 
 
 # Introduction
@@ -166,7 +166,7 @@ We decided to normalize our tables to organize our data in the database. We did 
       * Did parts of business rules and glossary
       * Kept track of conceptual design and ER model to assisted with normalization
       * Helped with dummy data and queries for business reports
-3. Edward Tang
+3. [Edward Tang](https://www.linkedin.com/in/progressedd/)
       * Hosted repository and MySql Workbench work
       * Forward engineered ER model
       * On call for supporting data upload
