@@ -175,7 +175,9 @@ We decided to normalize our tables to organize our data in the database. We did 
       * Assembled the final paper
       * Active link between SQL changes on business rules and glossary
       * Gathered members for meetings and assigned tasks to members
-  
+# ER Diagram
+![ER Diagram](https://github.com/progressEdd/MakerLab-Database-Design/blob/master/Makerlab-model.png?raw=true)
+
 # Database
 ## **Business Reports**
 
